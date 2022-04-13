@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ff.Models.evenement>
+
+
+
+
+
+<div class="creation">
+    <p>
+        @Html.ActionLink("créer un evenement", "Create", "evenements")
+    </p>
+</div>
+<h3>Mes evenements:</h3>
+<div class="titre">
+    <h3>Mes evenements crées</h3>
+</div>
+<div class="listeParticipant">
+    <span class="span">
+        @Html.ActionLink("Mes evenement archivés", "listeventArchives", "evenements")
+    </span>
+    @Html.Action("Index", "evenements")
+
+
+</div>
+<div class="titre">
+    <h3>Mes participations</h3>
+</div>
+
+<div class="listeParticipant">
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <label>@ViewBag.Quitter</label>
+        </div>
+        <span>
+            @Html.ActionLink("Mes participations archivés", "listArchives", "evenements")
+        </span>
+
+
+
+        @Html.Action("listParticipation", "evenements")
+    </div>
+
+    <div class="titre">
+        <h3>Tous les venements</h3>
+    </div>
+    <div class="listeParticipant">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <label>@ViewBag.Alert</label>
+            </div>
+        </div>
+        <span>
+            @Html.ActionLink("evenement passés", "listeUserArchives", "evenements")
+        </span>
+        @Html.Action("listeUser", "evenements")
+
+    </div>
+
+
+

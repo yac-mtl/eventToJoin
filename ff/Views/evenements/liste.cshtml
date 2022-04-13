@@ -1,0 +1,132 @@
+﻿@model IEnumerable<ff.Models.evenement>
+
+@{
+    ViewBag.Title = "liste";
+}
+
+<h2>liste</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="divtableau">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.dateDebut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateFin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.adresse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ville)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.province)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.codePostal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.prix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreParticipant)/@Html.DisplayNameFor(model => model.nombreRejoint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.heureDebut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.heureFin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateCreation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateSuppression)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.personneEmail)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dateDebut)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dateFin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.adresse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ville)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.province)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pays)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.codePostal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sport)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.prix)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreParticipant)/@Html.DisplayFor(modelItem => item.nombreRejoint)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.heureDebut)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.heureFin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dateCreation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dateSuppression)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.personneEmail)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idEvenement })
+                    @Html.ActionLink("Details", "Details", new { id = item.idEvenement })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idEvenement })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

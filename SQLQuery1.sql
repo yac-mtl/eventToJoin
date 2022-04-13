@@ -1,0 +1,1 @@
+﻿select  * from personne p full join users u on p.email = u.personneEmail  ;

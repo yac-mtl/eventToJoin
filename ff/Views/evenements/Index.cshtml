@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ff.Models.evenement>
+
+
+
+
+
+<p>
+    Mes evenements:
+</p>
+
+@foreach (var item in Model.Where(c => c.personneEmail == Session["e"].ToString() ).Where(v=>v.dateFin > DateTime.Now ))
+{
+    <div class="listeParticipant">
+        <table>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.dateDebut)</td>
+                <td>@Html.DisplayFor(modelItem => item.dateDebut)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.dateFin)</td>
+                <td>@Html.DisplayFor(modelItem => item.dateFin)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.adresse)</td>
+                <td>@Html.DisplayFor(modelItem => item.adresse),@Html.DisplayFor(modelItem => item.ville), @Html.DisplayFor(modelItem => item.codePostal),@Html.DisplayFor(modelItem => item.pays)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.sport)</td>
+                <td>@Html.DisplayFor(modelItem => item.sport)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.prix)</td>
+                <td>@Html.DisplayFor(modelItem => item.prix)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.nombreParticipant)/ @Html.DisplayNameFor(model => model.nombreRejoint)</td>
+                <td>@Html.DisplayFor(modelItem => item.nombreParticipant)/@Html.DisplayFor(modelItem => item.nombreRejoint)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.heureDebut)</td>
+                <td>@Html.DisplayFor(modelItem => item.heureDebut)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.heureFin)</td>
+                <td>@Html.DisplayFor(modelItem => item.heureFin)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.type)</td>
+                <td>@Html.DisplayFor(modelItem => item.type)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.genre)</td>
+                <td>@Html.DisplayFor(modelItem => item.genre)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.dateCreation)</td>
+                <td>@Html.DisplayFor(modelItem => item.dateCreation)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idEvenement })|
+                    @Html.ActionLink("Details", "Details", new { id = item.idEvenement })|
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idEvenement })
+                </td>
+            </tr>
+        </table>
+    </div>
+
+}
+

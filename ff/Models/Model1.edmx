@@ -1,0 +1,1328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="evModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="administrateur">
+          <Key>
+            <PropertyRef Name="idAdministrateur" />
+          </Key>
+          <Property Name="idAdministrateur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personneEmail" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="administrateur_evenement">
+          <Key>
+            <PropertyRef Name="administrateurId" />
+          </Key>
+          <Property Name="evenementId" Type="int" />
+          <Property Name="administrateurId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="administrateur_personne">
+          <Key>
+            <PropertyRef Name="personneEmail" />
+          </Key>
+          <Property Name="personneEmail" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="administrateurId" Type="int" />
+        </EntityType>
+        <EntityType Name="banque">
+          <Key>
+            <PropertyRef Name="idBanque" />
+          </Key>
+          <Property Name="idBanque" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomBanque" Type="varchar" MaxLength="255" />
+          <Property Name="adresseBanque" Type="varchar" MaxLength="255" />
+          <Property Name="ville" Type="varchar" MaxLength="255" />
+          <Property Name="codePostal" Type="varchar" MaxLength="255" />
+          <Property Name="telBanque" Type="char" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="carteCredit">
+          <Key>
+            <PropertyRef Name="idCarte" />
+          </Key>
+          <Property Name="idCarte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numeroCarte" Type="int" Nullable="false" />
+          <Property Name="dateExpiration" Type="date" Nullable="false" />
+          <Property Name="numeroSecret" Type="int" Nullable="false" />
+          <Property Name="nomTitulaire" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="prenomTitulaire" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="typeCarte" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="dateSuppression" Type="date" />
+          <Property Name="etat" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="personneEmail" Type="varchar" MaxLength="255" />
+          <Property Name="banqueId" Type="int" />
+        </EntityType>
+        <EntityType Name="evenement">
+          <Key>
+            <PropertyRef Name="idEvenement" />
+          </Key>
+          <Property Name="idEvenement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dateDebut" Type="date" Nullable="false" />
+          <Property Name="dateFin" Type="date" Nullable="false" />
+          <Property Name="adresse" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ville" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="province" Type="varchar" MaxLength="255" />
+          <Property Name="pays" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="codePostal" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="sport" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="prix" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="nombreParticipant" Type="int" Nullable="false" />
+          <Property Name="nombreRejoint" Type="int" Nullable="false" />
+          <Property Name="heureDebut" Type="time" Precision="7" Nullable="false" />
+          <Property Name="heureFin" Type="time" Precision="7" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="genre" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="dateCreation" Type="date" Nullable="false" />
+          <Property Name="dateSuppression" Type="date" />
+          <Property Name="personneEmail" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="mail">
+          <Key>
+            <PropertyRef Name="idEmail" />
+          </Key>
+          <Property Name="idEmail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emailDestinataire" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="sujet" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="contenue" Type="ntext" Nullable="false" />
+          <Property Name="dateEnvoie" Type="date" Nullable="false" />
+          <Property Name="etat" Type="varchar" MaxLength="255" />
+          <Property Name="personneEmail" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="note">
+          <Key>
+            <PropertyRef Name="idNote" />
+          </Key>
+          <Property Name="idNote" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="note" Type="int" Nullable="false" />
+          <Property Name="datePublication" Type="date" Nullable="false" />
+          <Property Name="dateSuppression" Type="date" />
+          <Property Name="etat" Type="varchar" MaxLength="255" />
+          <Property Name="participantIdParticipant" Type="int" />
+          <Property Name="organisateurId" Type="int" />
+        </EntityType>
+        <EntityType Name="organisateur">
+          <Key>
+            <PropertyRef Name="idOrganisateur" />
+          </Key>
+          <Property Name="idOrganisateur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="participantIdParticipant" Type="int" />
+          <Property Name="personneEmail" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="paiement">
+          <Key>
+            <PropertyRef Name="idPaiement" />
+          </Key>
+          <Property Name="idPaiement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="somme" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="datePaiement" Type="date" Nullable="false" />
+          <Property Name="etat" Type="varchar" MaxLength="255" />
+          <Property Name="evenementId" Type="int" />
+          <Property Name="carteCreditId" Type="int" />
+        </EntityType>
+        <EntityType Name="participant">
+          <Key>
+            <PropertyRef Name="idParticipant" />
+          </Key>
+          <Property Name="idParticipant" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dateRejoint" Type="date" Nullable="false" />
+          <Property Name="dateQuitter" Type="date" />
+          <Property Name="utilisateurIdUtilisateur" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="participant_evenement">
+          <Key>
+            <PropertyRef Name="participantId" />
+          </Key>
+          <Property Name="participantId" Type="int" Nullable="false" />
+          <Property Name="evenementId" Type="int" />
+          <Property Name="idUtilisateur" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personne">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="nom" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="prenom" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="motDePasse" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="dateDeNaissance" Type="date" Nullable="false" />
+          <Property Name="genre" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="occupation" Type="varchar" MaxLength="255" />
+          <Property Name="DateDeCreation" Type="datetime" />
+        </EntityType>
+        <EntityType Name="remboursement">
+          <Key>
+            <PropertyRef Name="idRemboursement" />
+          </Key>
+          <Property Name="idRemboursement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="somme" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="dateRemboursement" Type="date" Nullable="false" />
+          <Property Name="etat" Type="varchar" MaxLength="255" />
+          <Property Name="paiementId" Type="int" />
+          <Property Name="carteCreditId" Type="int" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="idUtilisateur" />
+          </Key>
+          <Property Name="idUtilisateur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personneEmail" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK__administr__admin__3D5E1FD2">
+          <End Role="administrateur" Type="Self.administrateur" Multiplicity="0..1" />
+          <End Role="administrateur_personne" Type="Self.administrateur_personne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="administrateur">
+              <PropertyRef Name="idAdministrateur" />
+            </Principal>
+            <Dependent Role="administrateur_personne">
+              <PropertyRef Name="administrateurId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__administr__admin__412EB0B6">
+          <End Role="administrateur" Type="Self.administrateur" Multiplicity="1" />
+          <End Role="administrateur_evenement" Type="Self.administrateur_evenement" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="administrateur">
+              <PropertyRef Name="idAdministrateur" />
+            </Principal>
+            <Dependent Role="administrateur_evenement">
+              <PropertyRef Name="administrateurId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__administr__evene__76969D2E">
+          <End Role="evenement" Type="Self.evenement" Multiplicity="0..1" />
+          <End Role="administrateur_evenement" Type="Self.administrateur_evenement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="evenement">
+              <PropertyRef Name="idEvenement" />
+            </Principal>
+            <Dependent Role="administrateur_evenement">
+              <PropertyRef Name="evenementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__administr__perso__398D8EEE">
+          <End Role="personne" Type="Self.personne" Multiplicity="0..1" />
+          <End Role="administrateur" Type="Self.administrateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="administrateur">
+              <PropertyRef Name="personneEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__administr__perso__3C69FB99">
+          <End Role="personne" Type="Self.personne" Multiplicity="1" />
+          <End Role="administrateur_personne" Type="Self.administrateur_personne" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="administrateur_personne">
+              <PropertyRef Name="personneEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__carteCred__banqu__4E88ABD4">
+          <End Role="banque" Type="Self.banque" Multiplicity="0..1" />
+          <End Role="carteCredit" Type="Self.carteCredit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="banque">
+              <PropertyRef Name="idBanque" />
+            </Principal>
+            <Dependent Role="carteCredit">
+              <PropertyRef Name="banqueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__carteCred__perso__4D94879B">
+          <End Role="personne" Type="Self.personne" Multiplicity="0..1" />
+          <End Role="carteCredit" Type="Self.carteCredit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="carteCredit">
+              <PropertyRef Name="personneEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__evenement__perso__75A278F5">
+          <End Role="personne" Type="Self.personne" Multiplicity="0..1" />
+          <End Role="evenement" Type="Self.evenement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="evenement">
+              <PropertyRef Name="personneEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__mail__personneEm__70DDC3D8">
+          <End Role="personne" Type="Self.personne" Multiplicity="1" />
+          <End Role="mail" Type="Self.mail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="mail">
+              <PropertyRef Name="personneEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__note__organisate__35BCFE0A">
+          <End Role="organisateur" Type="Self.organisateur" Multiplicity="0..1" />
+          <End Role="note" Type="Self.note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="organisateur">
+              <PropertyRef Name="idOrganisateur" />
+            </Principal>
+            <Dependent Role="note">
+              <PropertyRef Name="organisateurId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__note__participan__36B12243">
+          <End Role="participant" Type="Self.participant" Multiplicity="0..1" />
+          <End Role="note" Type="Self.note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="participant">
+              <PropertyRef Name="idParticipant" />
+            </Principal>
+            <Dependent Role="note">
+              <PropertyRef Name="participantIdParticipant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__organisat__parti__31EC6D26">
+          <End Role="participant" Type="Self.participant" Multiplicity="0..1" />
+          <End Role="organisateur" Type="Self.organisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="participant">
+              <PropertyRef Name="idParticipant" />
+            </Principal>
+            <Dependent Role="organisateur">
+              <PropertyRef Name="participantIdParticipant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__organisat__perso__30F848ED">
+          <End Role="personne" Type="Self.personne" Multiplicity="0..1" />
+          <End Role="organisateur" Type="Self.organisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="organisateur">
+              <PropertyRef Name="personneEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__paiement__carteC__52593CB8">
+          <End Role="carteCredit" Type="Self.carteCredit" Multiplicity="0..1" />
+          <End Role="paiement" Type="Self.paiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="carteCredit">
+              <PropertyRef Name="idCarte" />
+            </Principal>
+            <Dependent Role="paiement">
+              <PropertyRef Name="carteCreditId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__paiement__evenem__787EE5A0">
+          <End Role="evenement" Type="Self.evenement" Multiplicity="0..1" />
+          <End Role="paiement" Type="Self.paiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="evenement">
+              <PropertyRef Name="idEvenement" />
+            </Principal>
+            <Dependent Role="paiement">
+              <PropertyRef Name="evenementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__participa__evene__778AC167">
+          <End Role="evenement" Type="Self.evenement" Multiplicity="0..1" />
+          <End Role="participant_evenement" Type="Self.participant_evenement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="evenement">
+              <PropertyRef Name="idEvenement" />
+            </Principal>
+            <Dependent Role="participant_evenement">
+              <PropertyRef Name="evenementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__participa__idUti__7A672E12">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="participant_evenement" Type="Self.participant_evenement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="idUtilisateur" />
+            </Principal>
+            <Dependent Role="participant_evenement">
+              <PropertyRef Name="idUtilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__participa__parti__44FF419A">
+          <End Role="participant" Type="Self.participant" Multiplicity="1" />
+          <End Role="participant_evenement" Type="Self.participant_evenement" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="participant">
+              <PropertyRef Name="idParticipant" />
+            </Principal>
+            <Dependent Role="participant_evenement">
+              <PropertyRef Name="participantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__participa__utili__797309D9">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="participant" Type="Self.participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="idUtilisateur" />
+            </Principal>
+            <Dependent Role="participant">
+              <PropertyRef Name="utilisateurIdUtilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__rembourse__carte__5629CD9C">
+          <End Role="carteCredit" Type="Self.carteCredit" Multiplicity="0..1" />
+          <End Role="remboursement" Type="Self.remboursement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="carteCredit">
+              <PropertyRef Name="idCarte" />
+            </Principal>
+            <Dependent Role="remboursement">
+              <PropertyRef Name="carteCreditId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__rembourse__paiem__5535A963">
+          <End Role="paiement" Type="Self.paiement" Multiplicity="0..1" />
+          <End Role="remboursement" Type="Self.remboursement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paiement">
+              <PropertyRef Name="idPaiement" />
+            </Principal>
+            <Dependent Role="remboursement">
+              <PropertyRef Name="paiementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__users__personneE__2B3F6F97">
+          <End Role="personne" Type="Self.personne" Multiplicity="0..1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="personneEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="evModelStoreContainer">
+          <EntitySet Name="administrateur" EntityType="Self.administrateur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="administrateur_evenement" EntityType="Self.administrateur_evenement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="administrateur_personne" EntityType="Self.administrateur_personne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="banque" EntityType="Self.banque" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="carteCredit" EntityType="Self.carteCredit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="evenement" EntityType="Self.evenement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mail" EntityType="Self.mail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="note" EntityType="Self.note" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="organisateur" EntityType="Self.organisateur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="paiement" EntityType="Self.paiement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="participant" EntityType="Self.participant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="participant_evenement" EntityType="Self.participant_evenement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personne" EntityType="Self.personne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="remboursement" EntityType="Self.remboursement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__administr__admin__3D5E1FD2" Association="Self.FK__administr__admin__3D5E1FD2">
+            <End Role="administrateur" EntitySet="administrateur" />
+            <End Role="administrateur_personne" EntitySet="administrateur_personne" />
+          </AssociationSet>
+          <AssociationSet Name="FK__administr__admin__412EB0B6" Association="Self.FK__administr__admin__412EB0B6">
+            <End Role="administrateur" EntitySet="administrateur" />
+            <End Role="administrateur_evenement" EntitySet="administrateur_evenement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__administr__evene__76969D2E" Association="Self.FK__administr__evene__76969D2E">
+            <End Role="evenement" EntitySet="evenement" />
+            <End Role="administrateur_evenement" EntitySet="administrateur_evenement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__administr__perso__398D8EEE" Association="Self.FK__administr__perso__398D8EEE">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="administrateur" EntitySet="administrateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK__administr__perso__3C69FB99" Association="Self.FK__administr__perso__3C69FB99">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="administrateur_personne" EntitySet="administrateur_personne" />
+          </AssociationSet>
+          <AssociationSet Name="FK__carteCred__banqu__4E88ABD4" Association="Self.FK__carteCred__banqu__4E88ABD4">
+            <End Role="banque" EntitySet="banque" />
+            <End Role="carteCredit" EntitySet="carteCredit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__carteCred__perso__4D94879B" Association="Self.FK__carteCred__perso__4D94879B">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="carteCredit" EntitySet="carteCredit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__evenement__perso__75A278F5" Association="Self.FK__evenement__perso__75A278F5">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="evenement" EntitySet="evenement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__mail__personneEm__70DDC3D8" Association="Self.FK__mail__personneEm__70DDC3D8">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="mail" EntitySet="mail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__note__organisate__35BCFE0A" Association="Self.FK__note__organisate__35BCFE0A">
+            <End Role="organisateur" EntitySet="organisateur" />
+            <End Role="note" EntitySet="note" />
+          </AssociationSet>
+          <AssociationSet Name="FK__note__participan__36B12243" Association="Self.FK__note__participan__36B12243">
+            <End Role="participant" EntitySet="participant" />
+            <End Role="note" EntitySet="note" />
+          </AssociationSet>
+          <AssociationSet Name="FK__organisat__parti__31EC6D26" Association="Self.FK__organisat__parti__31EC6D26">
+            <End Role="participant" EntitySet="participant" />
+            <End Role="organisateur" EntitySet="organisateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK__organisat__perso__30F848ED" Association="Self.FK__organisat__perso__30F848ED">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="organisateur" EntitySet="organisateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK__paiement__carteC__52593CB8" Association="Self.FK__paiement__carteC__52593CB8">
+            <End Role="carteCredit" EntitySet="carteCredit" />
+            <End Role="paiement" EntitySet="paiement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__paiement__evenem__787EE5A0" Association="Self.FK__paiement__evenem__787EE5A0">
+            <End Role="evenement" EntitySet="evenement" />
+            <End Role="paiement" EntitySet="paiement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__participa__evene__778AC167" Association="Self.FK__participa__evene__778AC167">
+            <End Role="evenement" EntitySet="evenement" />
+            <End Role="participant_evenement" EntitySet="participant_evenement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__participa__idUti__7A672E12" Association="Self.FK__participa__idUti__7A672E12">
+            <End Role="users" EntitySet="users" />
+            <End Role="participant_evenement" EntitySet="participant_evenement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__participa__parti__44FF419A" Association="Self.FK__participa__parti__44FF419A">
+            <End Role="participant" EntitySet="participant" />
+            <End Role="participant_evenement" EntitySet="participant_evenement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__participa__utili__797309D9" Association="Self.FK__participa__utili__797309D9">
+            <End Role="users" EntitySet="users" />
+            <End Role="participant" EntitySet="participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__rembourse__carte__5629CD9C" Association="Self.FK__rembourse__carte__5629CD9C">
+            <End Role="carteCredit" EntitySet="carteCredit" />
+            <End Role="remboursement" EntitySet="remboursement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__rembourse__paiem__5535A963" Association="Self.FK__rembourse__paiem__5535A963">
+            <End Role="paiement" EntitySet="paiement" />
+            <End Role="remboursement" EntitySet="remboursement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__users__personneE__2B3F6F97" Association="Self.FK__users__personneE__2B3F6F97">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="evModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="administrateur">
+          <Key>
+            <PropertyRef Name="idAdministrateur" />
+          </Key>
+          <Property Name="idAdministrateur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personneEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="administrateur_personne" Relationship="Self.FK__administr__admin__3D5E1FD2" FromRole="administrateur" ToRole="administrateur_personne" />
+          <NavigationProperty Name="administrateur_evenement" Relationship="Self.FK__administr__admin__412EB0B6" FromRole="administrateur" ToRole="administrateur_evenement" />
+          <NavigationProperty Name="personne" Relationship="Self.FK__administr__perso__398D8EEE" FromRole="administrateur" ToRole="personne" />
+        </EntityType>
+        <EntityType Name="administrateur_evenement">
+          <Key>
+            <PropertyRef Name="administrateurId" />
+          </Key>
+          <Property Name="evenementId" Type="Int32" />
+          <Property Name="administrateurId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="administrateur" Relationship="Self.FK__administr__admin__412EB0B6" FromRole="administrateur_evenement" ToRole="administrateur" />
+          <NavigationProperty Name="evenement" Relationship="Self.FK__administr__evene__76969D2E" FromRole="administrateur_evenement" ToRole="evenement" />
+        </EntityType>
+        <EntityType Name="administrateur_personne">
+          <Key>
+            <PropertyRef Name="personneEmail" />
+          </Key>
+          <Property Name="personneEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="administrateurId" Type="Int32" />
+          <NavigationProperty Name="administrateur" Relationship="Self.FK__administr__admin__3D5E1FD2" FromRole="administrateur_personne" ToRole="administrateur" />
+          <NavigationProperty Name="personne" Relationship="Self.FK__administr__perso__3C69FB99" FromRole="administrateur_personne" ToRole="personne" />
+        </EntityType>
+        <EntityType Name="banque">
+          <Key>
+            <PropertyRef Name="idBanque" />
+          </Key>
+          <Property Name="idBanque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomBanque" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="adresseBanque" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ville" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="codePostal" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="telBanque" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="carteCredits" Relationship="Self.FK__carteCred__banqu__4E88ABD4" FromRole="banque" ToRole="carteCredit" />
+        </EntityType>
+        <EntityType Name="carteCredit">
+          <Key>
+            <PropertyRef Name="idCarte" />
+          </Key>
+          <Property Name="idCarte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numeroCarte" Type="Int32" Nullable="false" />
+          <Property Name="dateExpiration" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="numeroSecret" Type="Int32" Nullable="false" />
+          <Property Name="nomTitulaire" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prenomTitulaire" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="typeCarte" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateSuppression" Type="DateTime" Precision="0" />
+          <Property Name="etat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="personneEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="banqueId" Type="Int32" />
+          <NavigationProperty Name="banque" Relationship="Self.FK__carteCred__banqu__4E88ABD4" FromRole="carteCredit" ToRole="banque" />
+          <NavigationProperty Name="personne" Relationship="Self.FK__carteCred__perso__4D94879B" FromRole="carteCredit" ToRole="personne" />
+          <NavigationProperty Name="paiements" Relationship="Self.FK__paiement__carteC__52593CB8" FromRole="carteCredit" ToRole="paiement" />
+          <NavigationProperty Name="remboursements" Relationship="Self.FK__rembourse__carte__5629CD9C" FromRole="carteCredit" ToRole="remboursement" />
+        </EntityType>
+        <EntityType Name="evenement">
+          <Key>
+            <PropertyRef Name="idEvenement" />
+          </Key>
+          <Property Name="idEvenement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dateDebut" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dateFin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="adresse" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ville" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="province" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="pays" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="codePostal" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sport" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prix" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="nombreParticipant" Type="Int32" Nullable="false" />
+          <Property Name="nombreRejoint" Type="Int32" Nullable="false" />
+          <Property Name="heureDebut" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="heureFin" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="genre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateCreation" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dateSuppression" Type="DateTime" Precision="0" />
+          <Property Name="personneEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="administrateur_evenement" Relationship="Self.FK__administr__evene__76969D2E" FromRole="evenement" ToRole="administrateur_evenement" />
+          <NavigationProperty Name="personne" Relationship="Self.FK__evenement__perso__75A278F5" FromRole="evenement" ToRole="personne" />
+          <NavigationProperty Name="paiements" Relationship="Self.FK__paiement__evenem__787EE5A0" FromRole="evenement" ToRole="paiement" />
+          <NavigationProperty Name="participant_evenement" Relationship="Self.FK__participa__evene__778AC167" FromRole="evenement" ToRole="participant_evenement" />
+        </EntityType>
+        <EntityType Name="mail">
+          <Key>
+            <PropertyRef Name="idEmail" />
+          </Key>
+          <Property Name="idEmail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emailDestinataire" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sujet" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contenue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateEnvoie" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="etat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="personneEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="personne" Relationship="Self.FK__mail__personneEm__70DDC3D8" FromRole="mail" ToRole="personne" />
+        </EntityType>
+        <EntityType Name="note">
+          <Key>
+            <PropertyRef Name="idNote" />
+          </Key>
+          <Property Name="idNote" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="note1" Type="Int32" Nullable="false" />
+          <Property Name="datePublication" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dateSuppression" Type="DateTime" Precision="0" />
+          <Property Name="etat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="participantIdParticipant" Type="Int32" />
+          <Property Name="organisateurId" Type="Int32" />
+          <NavigationProperty Name="organisateur" Relationship="Self.FK__note__organisate__35BCFE0A" FromRole="note" ToRole="organisateur" />
+          <NavigationProperty Name="participant" Relationship="Self.FK__note__participan__36B12243" FromRole="note" ToRole="participant" />
+        </EntityType>
+        <EntityType Name="organisateur">
+          <Key>
+            <PropertyRef Name="idOrganisateur" />
+          </Key>
+          <Property Name="idOrganisateur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="participantIdParticipant" Type="Int32" />
+          <Property Name="personneEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="notes" Relationship="Self.FK__note__organisate__35BCFE0A" FromRole="organisateur" ToRole="note" />
+          <NavigationProperty Name="participant" Relationship="Self.FK__organisat__parti__31EC6D26" FromRole="organisateur" ToRole="participant" />
+          <NavigationProperty Name="personne" Relationship="Self.FK__organisat__perso__30F848ED" FromRole="organisateur" ToRole="personne" />
+        </EntityType>
+        <EntityType Name="paiement">
+          <Key>
+            <PropertyRef Name="idPaiement" />
+          </Key>
+          <Property Name="idPaiement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="somme" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="datePaiement" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="etat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="evenementId" Type="Int32" />
+          <Property Name="carteCreditId" Type="Int32" />
+          <NavigationProperty Name="carteCredit" Relationship="Self.FK__paiement__carteC__52593CB8" FromRole="paiement" ToRole="carteCredit" />
+          <NavigationProperty Name="evenement" Relationship="Self.FK__paiement__evenem__787EE5A0" FromRole="paiement" ToRole="evenement" />
+          <NavigationProperty Name="remboursements" Relationship="Self.FK__rembourse__paiem__5535A963" FromRole="paiement" ToRole="remboursement" />
+        </EntityType>
+        <EntityType Name="participant">
+          <Key>
+            <PropertyRef Name="idParticipant" />
+          </Key>
+          <Property Name="idParticipant" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dateRejoint" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dateQuitter" Type="DateTime" Precision="0" />
+          <Property Name="utilisateurIdUtilisateur" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="notes" Relationship="Self.FK__note__participan__36B12243" FromRole="participant" ToRole="note" />
+          <NavigationProperty Name="organisateurs" Relationship="Self.FK__organisat__parti__31EC6D26" FromRole="participant" ToRole="organisateur" />
+          <NavigationProperty Name="participant_evenement" Relationship="Self.FK__participa__parti__44FF419A" FromRole="participant" ToRole="participant_evenement" />
+          <NavigationProperty Name="user" Relationship="Self.FK__participa__utili__797309D9" FromRole="participant" ToRole="users" />
+        </EntityType>
+        <EntityType Name="participant_evenement">
+          <Key>
+            <PropertyRef Name="participantId" />
+          </Key>
+          <Property Name="participantId" Type="Int32" Nullable="false" />
+          <Property Name="evenementId" Type="Int32" />
+          <Property Name="idUtilisateur" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="evenement" Relationship="Self.FK__participa__evene__778AC167" FromRole="participant_evenement" ToRole="evenement" />
+          <NavigationProperty Name="participant" Relationship="Self.FK__participa__parti__44FF419A" FromRole="participant_evenement" ToRole="participant" />
+          <NavigationProperty Name="user" Relationship="Self.FK__participa__idUti__7A672E12" FromRole="participant_evenement" ToRole="users" />
+        </EntityType>
+        <EntityType Name="personne">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="nom" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="motDePasse" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateDeNaissance" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="genre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="occupation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DateDeCreation" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="administrateurs" Relationship="Self.FK__administr__perso__398D8EEE" FromRole="personne" ToRole="administrateur" />
+          <NavigationProperty Name="administrateur_personne" Relationship="Self.FK__administr__perso__3C69FB99" FromRole="personne" ToRole="administrateur_personne" />
+          <NavigationProperty Name="carteCredits" Relationship="Self.FK__carteCred__perso__4D94879B" FromRole="personne" ToRole="carteCredit" />
+          <NavigationProperty Name="evenements" Relationship="Self.FK__evenement__perso__75A278F5" FromRole="personne" ToRole="evenement" />
+          <NavigationProperty Name="mails" Relationship="Self.FK__mail__personneEm__70DDC3D8" FromRole="personne" ToRole="mail" />
+          <NavigationProperty Name="organisateurs" Relationship="Self.FK__organisat__perso__30F848ED" FromRole="personne" ToRole="organisateur" />
+          <NavigationProperty Name="users" Relationship="Self.FK__users__personneE__2B3F6F97" FromRole="personne" ToRole="users" />
+        </EntityType>
+        <EntityType Name="remboursement">
+          <Key>
+            <PropertyRef Name="idRemboursement" />
+          </Key>
+          <Property Name="idRemboursement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="somme" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="dateRemboursement" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="etat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="paiementId" Type="Int32" />
+          <Property Name="carteCreditId" Type="Int32" />
+          <NavigationProperty Name="carteCredit" Relationship="Self.FK__rembourse__carte__5629CD9C" FromRole="remboursement" ToRole="carteCredit" />
+          <NavigationProperty Name="paiement" Relationship="Self.FK__rembourse__paiem__5535A963" FromRole="remboursement" ToRole="paiement" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="idUtilisateur" />
+          </Key>
+          <Property Name="idUtilisateur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personneEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="participants" Relationship="Self.FK__participa__utili__797309D9" FromRole="users" ToRole="participant" />
+          <NavigationProperty Name="participant_evenement" Relationship="Self.FK__participa__idUti__7A672E12" FromRole="users" ToRole="participant_evenement" />
+          <NavigationProperty Name="personne" Relationship="Self.FK__users__personneE__2B3F6F97" FromRole="users" ToRole="personne" />
+        </EntityType>
+        <Association Name="FK__administr__admin__3D5E1FD2">
+          <End Role="administrateur" Type="Self.administrateur" Multiplicity="0..1" />
+          <End Role="administrateur_personne" Type="Self.administrateur_personne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="administrateur">
+              <PropertyRef Name="idAdministrateur" />
+            </Principal>
+            <Dependent Role="administrateur_personne">
+              <PropertyRef Name="administrateurId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__administr__admin__412EB0B6">
+          <End Role="administrateur" Type="Self.administrateur" Multiplicity="1" />
+          <End Role="administrateur_evenement" Type="Self.administrateur_evenement" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="administrateur">
+              <PropertyRef Name="idAdministrateur" />
+            </Principal>
+            <Dependent Role="administrateur_evenement">
+              <PropertyRef Name="administrateurId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__administr__perso__398D8EEE">
+          <End Role="personne" Type="Self.personne" Multiplicity="0..1" />
+          <End Role="administrateur" Type="Self.administrateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="administrateur">
+              <PropertyRef Name="personneEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__administr__evene__76969D2E">
+          <End Role="evenement" Type="Self.evenement" Multiplicity="0..1" />
+          <End Role="administrateur_evenement" Type="Self.administrateur_evenement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="evenement">
+              <PropertyRef Name="idEvenement" />
+            </Principal>
+            <Dependent Role="administrateur_evenement">
+              <PropertyRef Name="evenementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__administr__perso__3C69FB99">
+          <End Role="personne" Type="Self.personne" Multiplicity="1" />
+          <End Role="administrateur_personne" Type="Self.administrateur_personne" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="administrateur_personne">
+              <PropertyRef Name="personneEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__carteCred__banqu__4E88ABD4">
+          <End Role="banque" Type="Self.banque" Multiplicity="0..1" />
+          <End Role="carteCredit" Type="Self.carteCredit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="banque">
+              <PropertyRef Name="idBanque" />
+            </Principal>
+            <Dependent Role="carteCredit">
+              <PropertyRef Name="banqueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__carteCred__perso__4D94879B">
+          <End Role="personne" Type="Self.personne" Multiplicity="0..1" />
+          <End Role="carteCredit" Type="Self.carteCredit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="carteCredit">
+              <PropertyRef Name="personneEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__paiement__carteC__52593CB8">
+          <End Role="carteCredit" Type="Self.carteCredit" Multiplicity="0..1" />
+          <End Role="paiement" Type="Self.paiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="carteCredit">
+              <PropertyRef Name="idCarte" />
+            </Principal>
+            <Dependent Role="paiement">
+              <PropertyRef Name="carteCreditId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__rembourse__carte__5629CD9C">
+          <End Role="carteCredit" Type="Self.carteCredit" Multiplicity="0..1" />
+          <End Role="remboursement" Type="Self.remboursement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="carteCredit">
+              <PropertyRef Name="idCarte" />
+            </Principal>
+            <Dependent Role="remboursement">
+              <PropertyRef Name="carteCreditId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__evenement__perso__75A278F5">
+          <End Role="personne" Type="Self.personne" Multiplicity="0..1" />
+          <End Role="evenement" Type="Self.evenement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="evenement">
+              <PropertyRef Name="personneEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__paiement__evenem__787EE5A0">
+          <End Role="evenement" Type="Self.evenement" Multiplicity="0..1" />
+          <End Role="paiement" Type="Self.paiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="evenement">
+              <PropertyRef Name="idEvenement" />
+            </Principal>
+            <Dependent Role="paiement">
+              <PropertyRef Name="evenementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__participa__evene__778AC167">
+          <End Role="evenement" Type="Self.evenement" Multiplicity="0..1" />
+          <End Role="participant_evenement" Type="Self.participant_evenement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="evenement">
+              <PropertyRef Name="idEvenement" />
+            </Principal>
+            <Dependent Role="participant_evenement">
+              <PropertyRef Name="evenementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__mail__personneEm__70DDC3D8">
+          <End Role="personne" Type="Self.personne" Multiplicity="1" />
+          <End Role="mail" Type="Self.mail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="mail">
+              <PropertyRef Name="personneEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__note__organisate__35BCFE0A">
+          <End Role="organisateur" Type="Self.organisateur" Multiplicity="0..1" />
+          <End Role="note" Type="Self.note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="organisateur">
+              <PropertyRef Name="idOrganisateur" />
+            </Principal>
+            <Dependent Role="note">
+              <PropertyRef Name="organisateurId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__note__participan__36B12243">
+          <End Role="participant" Type="Self.participant" Multiplicity="0..1" />
+          <End Role="note" Type="Self.note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="participant">
+              <PropertyRef Name="idParticipant" />
+            </Principal>
+            <Dependent Role="note">
+              <PropertyRef Name="participantIdParticipant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__organisat__parti__31EC6D26">
+          <End Role="participant" Type="Self.participant" Multiplicity="0..1" />
+          <End Role="organisateur" Type="Self.organisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="participant">
+              <PropertyRef Name="idParticipant" />
+            </Principal>
+            <Dependent Role="organisateur">
+              <PropertyRef Name="participantIdParticipant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__organisat__perso__30F848ED">
+          <End Role="personne" Type="Self.personne" Multiplicity="0..1" />
+          <End Role="organisateur" Type="Self.organisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="organisateur">
+              <PropertyRef Name="personneEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__rembourse__paiem__5535A963">
+          <End Role="paiement" Type="Self.paiement" Multiplicity="0..1" />
+          <End Role="remboursement" Type="Self.remboursement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paiement">
+              <PropertyRef Name="idPaiement" />
+            </Principal>
+            <Dependent Role="remboursement">
+              <PropertyRef Name="paiementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__participa__parti__44FF419A">
+          <End Role="participant" Type="Self.participant" Multiplicity="1" />
+          <End Role="participant_evenement" Type="Self.participant_evenement" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="participant">
+              <PropertyRef Name="idParticipant" />
+            </Principal>
+            <Dependent Role="participant_evenement">
+              <PropertyRef Name="participantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__participa__utili__797309D9">
+          <End Role="users" Type="Self.user" Multiplicity="1" />
+          <End Role="participant" Type="Self.participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="idUtilisateur" />
+            </Principal>
+            <Dependent Role="participant">
+              <PropertyRef Name="utilisateurIdUtilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__participa__idUti__7A672E12">
+          <End Role="users" Type="Self.user" Multiplicity="1" />
+          <End Role="participant_evenement" Type="Self.participant_evenement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="idUtilisateur" />
+            </Principal>
+            <Dependent Role="participant_evenement">
+              <PropertyRef Name="idUtilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__users__personneE__2B3F6F97">
+          <End Role="personne" Type="Self.personne" Multiplicity="0..1" />
+          <End Role="users" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="personneEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="evEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="administrateurs" EntityType="Self.administrateur" />
+          <EntitySet Name="administrateur_evenement" EntityType="Self.administrateur_evenement" />
+          <EntitySet Name="administrateur_personne" EntityType="Self.administrateur_personne" />
+          <EntitySet Name="banques" EntityType="Self.banque" />
+          <EntitySet Name="carteCredits" EntityType="Self.carteCredit" />
+          <EntitySet Name="evenements" EntityType="Self.evenement" />
+          <EntitySet Name="mails" EntityType="Self.mail" />
+          <EntitySet Name="notes" EntityType="Self.note" />
+          <EntitySet Name="organisateurs" EntityType="Self.organisateur" />
+          <EntitySet Name="paiements" EntityType="Self.paiement" />
+          <EntitySet Name="participants" EntityType="Self.participant" />
+          <EntitySet Name="participant_evenement" EntityType="Self.participant_evenement" />
+          <EntitySet Name="personnes" EntityType="Self.personne" />
+          <EntitySet Name="remboursements" EntityType="Self.remboursement" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="FK__administr__admin__3D5E1FD2" Association="Self.FK__administr__admin__3D5E1FD2">
+            <End Role="administrateur" EntitySet="administrateurs" />
+            <End Role="administrateur_personne" EntitySet="administrateur_personne" />
+          </AssociationSet>
+          <AssociationSet Name="FK__administr__admin__412EB0B6" Association="Self.FK__administr__admin__412EB0B6">
+            <End Role="administrateur" EntitySet="administrateurs" />
+            <End Role="administrateur_evenement" EntitySet="administrateur_evenement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__administr__perso__398D8EEE" Association="Self.FK__administr__perso__398D8EEE">
+            <End Role="personne" EntitySet="personnes" />
+            <End Role="administrateur" EntitySet="administrateurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__administr__evene__76969D2E" Association="Self.FK__administr__evene__76969D2E">
+            <End Role="evenement" EntitySet="evenements" />
+            <End Role="administrateur_evenement" EntitySet="administrateur_evenement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__administr__perso__3C69FB99" Association="Self.FK__administr__perso__3C69FB99">
+            <End Role="personne" EntitySet="personnes" />
+            <End Role="administrateur_personne" EntitySet="administrateur_personne" />
+          </AssociationSet>
+          <AssociationSet Name="FK__carteCred__banqu__4E88ABD4" Association="Self.FK__carteCred__banqu__4E88ABD4">
+            <End Role="banque" EntitySet="banques" />
+            <End Role="carteCredit" EntitySet="carteCredits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__carteCred__perso__4D94879B" Association="Self.FK__carteCred__perso__4D94879B">
+            <End Role="personne" EntitySet="personnes" />
+            <End Role="carteCredit" EntitySet="carteCredits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__paiement__carteC__52593CB8" Association="Self.FK__paiement__carteC__52593CB8">
+            <End Role="carteCredit" EntitySet="carteCredits" />
+            <End Role="paiement" EntitySet="paiements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__rembourse__carte__5629CD9C" Association="Self.FK__rembourse__carte__5629CD9C">
+            <End Role="carteCredit" EntitySet="carteCredits" />
+            <End Role="remboursement" EntitySet="remboursements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__evenement__perso__75A278F5" Association="Self.FK__evenement__perso__75A278F5">
+            <End Role="personne" EntitySet="personnes" />
+            <End Role="evenement" EntitySet="evenements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__paiement__evenem__787EE5A0" Association="Self.FK__paiement__evenem__787EE5A0">
+            <End Role="evenement" EntitySet="evenements" />
+            <End Role="paiement" EntitySet="paiements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__participa__evene__778AC167" Association="Self.FK__participa__evene__778AC167">
+            <End Role="evenement" EntitySet="evenements" />
+            <End Role="participant_evenement" EntitySet="participant_evenement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__mail__personneEm__70DDC3D8" Association="Self.FK__mail__personneEm__70DDC3D8">
+            <End Role="personne" EntitySet="personnes" />
+            <End Role="mail" EntitySet="mails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__note__organisate__35BCFE0A" Association="Self.FK__note__organisate__35BCFE0A">
+            <End Role="organisateur" EntitySet="organisateurs" />
+            <End Role="note" EntitySet="notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__note__participan__36B12243" Association="Self.FK__note__participan__36B12243">
+            <End Role="participant" EntitySet="participants" />
+            <End Role="note" EntitySet="notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__organisat__parti__31EC6D26" Association="Self.FK__organisat__parti__31EC6D26">
+            <End Role="participant" EntitySet="participants" />
+            <End Role="organisateur" EntitySet="organisateurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__organisat__perso__30F848ED" Association="Self.FK__organisat__perso__30F848ED">
+            <End Role="personne" EntitySet="personnes" />
+            <End Role="organisateur" EntitySet="organisateurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__rembourse__paiem__5535A963" Association="Self.FK__rembourse__paiem__5535A963">
+            <End Role="paiement" EntitySet="paiements" />
+            <End Role="remboursement" EntitySet="remboursements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__participa__parti__44FF419A" Association="Self.FK__participa__parti__44FF419A">
+            <End Role="participant" EntitySet="participants" />
+            <End Role="participant_evenement" EntitySet="participant_evenement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__participa__utili__797309D9" Association="Self.FK__participa__utili__797309D9">
+            <End Role="users" EntitySet="users" />
+            <End Role="participant" EntitySet="participants" />
+          </AssociationSet>
+          <AssociationSet Name="FK__participa__idUti__7A672E12" Association="Self.FK__participa__idUti__7A672E12">
+            <End Role="users" EntitySet="users" />
+            <End Role="participant_evenement" EntitySet="participant_evenement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__users__personneE__2B3F6F97" Association="Self.FK__users__personneE__2B3F6F97">
+            <End Role="personne" EntitySet="personnes" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="evModelStoreContainer" CdmEntityContainer="evEntities1">
+          <EntitySetMapping Name="administrateurs">
+            <EntityTypeMapping TypeName="evModel.administrateur">
+              <MappingFragment StoreEntitySet="administrateur">
+                <ScalarProperty Name="idAdministrateur" ColumnName="idAdministrateur" />
+                <ScalarProperty Name="personneEmail" ColumnName="personneEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="administrateur_evenement">
+            <EntityTypeMapping TypeName="evModel.administrateur_evenement">
+              <MappingFragment StoreEntitySet="administrateur_evenement">
+                <ScalarProperty Name="evenementId" ColumnName="evenementId" />
+                <ScalarProperty Name="administrateurId" ColumnName="administrateurId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="administrateur_personne">
+            <EntityTypeMapping TypeName="evModel.administrateur_personne">
+              <MappingFragment StoreEntitySet="administrateur_personne">
+                <ScalarProperty Name="personneEmail" ColumnName="personneEmail" />
+                <ScalarProperty Name="administrateurId" ColumnName="administrateurId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="banques">
+            <EntityTypeMapping TypeName="evModel.banque">
+              <MappingFragment StoreEntitySet="banque">
+                <ScalarProperty Name="idBanque" ColumnName="idBanque" />
+                <ScalarProperty Name="nomBanque" ColumnName="nomBanque" />
+                <ScalarProperty Name="adresseBanque" ColumnName="adresseBanque" />
+                <ScalarProperty Name="ville" ColumnName="ville" />
+                <ScalarProperty Name="codePostal" ColumnName="codePostal" />
+                <ScalarProperty Name="telBanque" ColumnName="telBanque" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="carteCredits">
+            <EntityTypeMapping TypeName="evModel.carteCredit">
+              <MappingFragment StoreEntitySet="carteCredit">
+                <ScalarProperty Name="idCarte" ColumnName="idCarte" />
+                <ScalarProperty Name="numeroCarte" ColumnName="numeroCarte" />
+                <ScalarProperty Name="dateExpiration" ColumnName="dateExpiration" />
+                <ScalarProperty Name="numeroSecret" ColumnName="numeroSecret" />
+                <ScalarProperty Name="nomTitulaire" ColumnName="nomTitulaire" />
+                <ScalarProperty Name="prenomTitulaire" ColumnName="prenomTitulaire" />
+                <ScalarProperty Name="typeCarte" ColumnName="typeCarte" />
+                <ScalarProperty Name="dateSuppression" ColumnName="dateSuppression" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="personneEmail" ColumnName="personneEmail" />
+                <ScalarProperty Name="banqueId" ColumnName="banqueId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="evenements">
+            <EntityTypeMapping TypeName="evModel.evenement">
+              <MappingFragment StoreEntitySet="evenement">
+                <ScalarProperty Name="idEvenement" ColumnName="idEvenement" />
+                <ScalarProperty Name="dateDebut" ColumnName="dateDebut" />
+                <ScalarProperty Name="dateFin" ColumnName="dateFin" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="ville" ColumnName="ville" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="pays" ColumnName="pays" />
+                <ScalarProperty Name="codePostal" ColumnName="codePostal" />
+                <ScalarProperty Name="sport" ColumnName="sport" />
+                <ScalarProperty Name="prix" ColumnName="prix" />
+                <ScalarProperty Name="nombreParticipant" ColumnName="nombreParticipant" />
+                <ScalarProperty Name="nombreRejoint" ColumnName="nombreRejoint" />
+                <ScalarProperty Name="heureDebut" ColumnName="heureDebut" />
+                <ScalarProperty Name="heureFin" ColumnName="heureFin" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="genre" ColumnName="genre" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+                <ScalarProperty Name="dateSuppression" ColumnName="dateSuppression" />
+                <ScalarProperty Name="personneEmail" ColumnName="personneEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mails">
+            <EntityTypeMapping TypeName="evModel.mail">
+              <MappingFragment StoreEntitySet="mail">
+                <ScalarProperty Name="idEmail" ColumnName="idEmail" />
+                <ScalarProperty Name="emailDestinataire" ColumnName="emailDestinataire" />
+                <ScalarProperty Name="sujet" ColumnName="sujet" />
+                <ScalarProperty Name="contenue" ColumnName="contenue" />
+                <ScalarProperty Name="dateEnvoie" ColumnName="dateEnvoie" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="personneEmail" ColumnName="personneEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="notes">
+            <EntityTypeMapping TypeName="evModel.note">
+              <MappingFragment StoreEntitySet="note">
+                <ScalarProperty Name="idNote" ColumnName="idNote" />
+                <ScalarProperty Name="note1" ColumnName="note" />
+                <ScalarProperty Name="datePublication" ColumnName="datePublication" />
+                <ScalarProperty Name="dateSuppression" ColumnName="dateSuppression" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="participantIdParticipant" ColumnName="participantIdParticipant" />
+                <ScalarProperty Name="organisateurId" ColumnName="organisateurId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="organisateurs">
+            <EntityTypeMapping TypeName="evModel.organisateur">
+              <MappingFragment StoreEntitySet="organisateur">
+                <ScalarProperty Name="idOrganisateur" ColumnName="idOrganisateur" />
+                <ScalarProperty Name="participantIdParticipant" ColumnName="participantIdParticipant" />
+                <ScalarProperty Name="personneEmail" ColumnName="personneEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="paiements">
+            <EntityTypeMapping TypeName="evModel.paiement">
+              <MappingFragment StoreEntitySet="paiement">
+                <ScalarProperty Name="idPaiement" ColumnName="idPaiement" />
+                <ScalarProperty Name="somme" ColumnName="somme" />
+                <ScalarProperty Name="datePaiement" ColumnName="datePaiement" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="evenementId" ColumnName="evenementId" />
+                <ScalarProperty Name="carteCreditId" ColumnName="carteCreditId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="participants">
+            <EntityTypeMapping TypeName="evModel.participant">
+              <MappingFragment StoreEntitySet="participant">
+                <ScalarProperty Name="idParticipant" ColumnName="idParticipant" />
+                <ScalarProperty Name="dateRejoint" ColumnName="dateRejoint" />
+                <ScalarProperty Name="dateQuitter" ColumnName="dateQuitter" />
+                <ScalarProperty Name="utilisateurIdUtilisateur" ColumnName="utilisateurIdUtilisateur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="participant_evenement">
+            <EntityTypeMapping TypeName="evModel.participant_evenement">
+              <MappingFragment StoreEntitySet="participant_evenement">
+                <ScalarProperty Name="participantId" ColumnName="participantId" />
+                <ScalarProperty Name="evenementId" ColumnName="evenementId" />
+                <ScalarProperty Name="idUtilisateur" ColumnName="idUtilisateur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personnes">
+            <EntityTypeMapping TypeName="evModel.personne">
+              <MappingFragment StoreEntitySet="personne">
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="motDePasse" ColumnName="motDePasse" />
+                <ScalarProperty Name="dateDeNaissance" ColumnName="dateDeNaissance" />
+                <ScalarProperty Name="genre" ColumnName="genre" />
+                <ScalarProperty Name="occupation" ColumnName="occupation" />
+                <ScalarProperty Name="DateDeCreation" ColumnName="DateDeCreation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="remboursements">
+            <EntityTypeMapping TypeName="evModel.remboursement">
+              <MappingFragment StoreEntitySet="remboursement">
+                <ScalarProperty Name="idRemboursement" ColumnName="idRemboursement" />
+                <ScalarProperty Name="somme" ColumnName="somme" />
+                <ScalarProperty Name="dateRemboursement" ColumnName="dateRemboursement" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="paiementId" ColumnName="paiementId" />
+                <ScalarProperty Name="carteCreditId" ColumnName="carteCreditId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="evModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="idUtilisateur" ColumnName="idUtilisateur" />
+                <ScalarProperty Name="personneEmail" ColumnName="personneEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

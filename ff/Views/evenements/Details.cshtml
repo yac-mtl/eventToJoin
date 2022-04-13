@@ -1,0 +1,154 @@
+﻿@model ff.Models.evenement
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>evenement</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dateDebut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateDebut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateFin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateFin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ville)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ville)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.province)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.province)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codePostal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codePostal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prix)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreParticipant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreParticipant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.heureDebut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.heureDebut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.heureFin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.heureFin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.genre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateCreation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateCreation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateSuppression)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateSuppression)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personneEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personneEmail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idEvenement }) |
+    @Html.ActionLink("Back to List", "Index","Home")
+</p>

@@ -1,0 +1,47 @@
+﻿@model ff.Models.administrateur
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Supprimer</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>administrateur</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.personne.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personne.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personne.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personne.nom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.personne.prenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personne.prenom)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

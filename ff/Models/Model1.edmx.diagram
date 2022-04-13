@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1fca22f58093478d865490769de78bb4" Name="Diagram1">
+        <EntityTypeShape EntityType="evModel.administrateur" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="evModel.administrateur_evenement" Width="1.5" PointX="5.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="evModel.administrateur_personne" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="evModel.banque" Width="1.5" PointX="3.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="evModel.carteCredit" Width="1.5" PointX="6" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="evModel.evenement" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="evModel.mail" Width="1.5" PointX="3" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="evModel.note" Width="1.5" PointX="10.75" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="evModel.organisateur" Width="1.5" PointX="8.5" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="evModel.paiement" Width="1.5" PointX="8.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="evModel.participant" Width="1.5" PointX="5.25" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="evModel.participant_evenement" Width="1.5" PointX="7.5" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="evModel.personne" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="evModel.remboursement" Width="1.5" PointX="10.5" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="evModel.user" Width="1.5" PointX="3" PointY="27.375" IsExpanded="true" />
+        <AssociationConnector Association="evModel.FK__administr__admin__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__administr__admin__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__administr__perso__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__administr__evene__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__administr__perso__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__carteCred__banqu__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__carteCred__perso__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__paiement__carteC__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__rembourse__carte__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__evenement__perso__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__paiement__evenem__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__participa__evene__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__mail__personneEm__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__note__organisate__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__note__participan__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__organisat__parti__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__organisat__perso__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__rembourse__paiem__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__participa__parti__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__participa__utili__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__participa__idUti__7A672E12" ManuallyRouted="false" />
+        <AssociationConnector Association="evModel.FK__users__personneE__2B3F6F97" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,41 @@
+﻿@model ff.Models.administrateur
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>administrateur</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.personneEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personneEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personne.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personne.nom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.personne.prenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personne.prenom)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idAdministrateur }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

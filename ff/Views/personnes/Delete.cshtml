@@ -1,0 +1,88 @@
+﻿@model ff.Models.personne
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Suppromer</h2>
+
+<h3>Vous etes sure de vouloir le supprimer?</h3>
+<div>
+    <h4>personne</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prenom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.motDePasse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.motDePasse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateDeNaissance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateDeNaissance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.genre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.occupation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.occupation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateDeCreation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateDeCreation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.administrateur_personne.personneEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.administrateur_personne.personneEmail)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

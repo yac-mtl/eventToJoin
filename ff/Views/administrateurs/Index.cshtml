@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ff.Models.administrateur>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Les administrateurs</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.personneEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.personne.nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.personne.prenom)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.personneEmail)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.personne.nom)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.personne.prenom)
+    </td>
+    @if (Model.ToList().Count() < 2)
+    {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.idAdministrateur }) |
+            @Html.ActionLink("Details", "Details", new { id = item.idAdministrateur }) |
+
+        </td>
+    }
+    else
+    {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.idAdministrateur }) |
+            @Html.ActionLink("Details", "Details", new { id = item.idAdministrateur }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.idAdministrateur })
+        </td>
+    }
+
+</tr>
+}
+
+</table>

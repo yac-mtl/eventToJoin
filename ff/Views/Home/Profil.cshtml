@@ -1,0 +1,76 @@
+﻿@model ff.Models.personne
+
+@{
+    ViewBag.Title = "Profil";
+}
+
+<h2>Profil</h2>
+
+<div>
+    <h4>personne</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prenom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.motDePasse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.motDePasse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateDeNaissance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateDeNaissance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.genre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.occupation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.occupation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+   
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit","Home", new { id = Model.email }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

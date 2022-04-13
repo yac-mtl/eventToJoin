@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ff.Models.personne>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Liste de tous les utilisateurs</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prenom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.motDePasse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateDeNaissance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.occupation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateDeCreation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.nom)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.prenom)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.motDePasse)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.dateDeNaissance)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.genre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.occupation)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DateDeCreation)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.email)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.email }) |
+        @Html.ActionLink("Details", "Details", "administrateurs", new { id = item.email }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.email })
+      
+    </td>
+</tr>
+}
+
+</table>
